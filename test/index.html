@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spinner loader</title>
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>With CSS custom properties</h1>
+        <section>
+            <article>
+                <div class="spinner-loader"></div>
+                <h1>Regular</h1>
+            </article>
+            <article>
+                <div class="spinner-loader black"></div>
+                <h1>Black</h1>
+            </article>
+            <article>
+                <div class="spinner-loader fast"></div>
+                <h1>Fast</h1>
+            </article>
+            <article>
+                <div class="spinner-loader big"></div>
+                <h1>Big</h1>
+            </article>
+            <article>
+                <div class="spinner-loader slim"></div>
+                <h1>Slim</h1>
+            </article>
+            <article>
+                <div class="spinner-loader fixed-thickness"></div>
+                <h1>Fixed thickness</h1>
+            </article>
+        </section>
+
+        <h1>Without CSS custom properties, variants by overriding CSS properties</h1>
+        <section>
+            <article>
+                <div class="legacy-spinner-loader"></div>
+                <h1>Regular</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader black"></div>
+                <h1>Black</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader fast"></div>
+                <h1>Fast</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader big"></div>
+                <h1>Big</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader slim"></div>
+                <h1>Slim</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader fixed-thickness"></div>
+                <h1>Fixed thickness</h1>
+            </article>
+        </section>
+
+        <h1>Without CSS custom properties, variants by multiple calls to mixin</h1>
+        <section>
+            <article>
+                <div class="legacy-spinner-loader"></div>
+                <h1>Regular</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader--black"></div>
+                <h1>Black</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader--fast"></div>
+                <h1>Fast</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader--big"></div>
+                <h1>Big</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader--slim"></div>
+                <h1>Slim</h1>
+            </article>
+            <article>
+                <div class="legacy-spinner-loader--fixed-thickness"></div>
+                <h1>Fixed thickness</h1>
+            </article>
+        </section>
+    </body>
+</html>

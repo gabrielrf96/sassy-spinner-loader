@@ -1,0 +1,152 @@
+@use 'sass:math';
+@use '../src/spinner-loader';
+
+
+//--- General styles ---//
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    padding: 25px;
+}
+
+h1 {
+    font-size: 24px;
+
+    &:not(:first-of-type) {
+        margin-top: 60px;
+    }
+}
+
+section {
+    padding: 20px;
+
+    & + section {
+        margin-top: 30px;
+    }
+}
+
+article {
+    display: inline-block;
+
+    h1 {
+        font-size: 16px;
+        color: #444;
+        text-align: center;
+    }
+
+    & + article {
+        margin-left: 45px;
+    }
+}
+
+
+//--- Spinner loader ---//
+
+@include spinner-loader.spinner-loader-animation;
+
+// With CSS custom properties (variables)
+.spinner-loader {
+    @include spinner-loader.spinner-loader(100px);
+    margin: 0 auto;
+
+    // Defining variants with classes, overriding CSS variables
+    &.black {
+        --fg-color: #000;
+    }
+
+    &.fast {
+        --spins-per-second: 2;
+    }
+
+    &.big {
+        --size: 200px;
+    }
+
+    &.slim {
+        --width-to-thickness-ratio: 0.05;
+    }
+
+    &.fixed-thickness {
+        --thickness: 20px;
+    }
+}
+
+// Without CSS custom properties (for older browsers)
+.legacy-spinner-loader {
+    @include spinner-loader.spinner-loader(100px, (useCssVariables: false));
+    margin: 0 auto;
+
+    // Defining variants in legacy mode (no CSS variables) is a bit more cumbersome, since you need to redefine CSS properties directly
+    &.black {
+        &::after {
+            border-top-color: #000;
+        }
+    }
+
+    &.fast {
+        &::after {
+            animation-duration: 0.5s;
+        }
+    }
+
+    &.big {
+        width: 200px;
+
+        &::after {
+            border-width: 200px * 0.125;
+        }
+    }
+
+    &.slim {
+        // In legacy mode, there is no way to override width-to-thickness ratio dynamically (only possibility is setting a fixed thickness)
+    }
+
+    &.fixed-thickness {
+        &::after {
+            border-width: 20px;
+        }
+    }
+}
+
+// Alternatively, you can define variants by calling the mixin multiple times. However, this has the downside of generating much larger CSS files
+.legacy-spinner-loader--black {
+    @include spinner-loader.spinner-loader(100px, (
+        fgColor: #000,
+        useCssVariables: false
+    ));
+    margin: 0 auto;
+}
+
+.legacy-spinner-loader--fast {
+    @include spinner-loader.spinner-loader(100px, (
+        spinsPerSecond: 2,
+        useCssVariables: false
+    ));
+    margin: 0 auto;
+}
+
+.legacy-spinner-loader--big {
+    @include spinner-loader.spinner-loader(200px, (useCssVariables: false));
+    margin: 0 auto;
+}
+
+.legacy-spinner-loader--slim {
+    @include spinner-loader.spinner-loader(100px, (
+        widthToThicknessRatio: 0.09,
+        useCssVariables: false
+    ));
+    margin: 0 auto;
+}
+
+.legacy-spinner-loader--fixed-thickness {
+    @include spinner-loader.spinner-loader(100px, (
+        thickness: 20px,
+        useCssVariables: false
+    ));
+    margin: 0 auto;
+}

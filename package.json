@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "author": "Gabriel Rodriguez <dev.gabrielrf@gmail.com> (https://www.gabrielrf.dev)",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.35.2"
+  }
+}

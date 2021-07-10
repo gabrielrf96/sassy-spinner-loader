@@ -1,0 +1,77 @@
+
+@use 'sass:map';
+@use 'sass:math';
+
+@mixin spinner-loader-animation {
+    @keyframes spinner-loader-rotation { to { transform: rotate(360deg); } }
+}
+
+@mixin spinner-loader( $size, $options: () ) {
+
+    $defaultOptions: (
+        thickness: auto,
+        widthToThicknessRatio: 0.125,
+        spinsPerSecond: 1.25,
+        fgColor: #008cff,
+        bgColor: rgba(#828382, 0.25),
+        position: relative,
+        display: block,
+        useCssVariables: true
+    );
+
+    $finalOptions: map.merge($defaultOptions, $options);
+    $useCssVariables: map.get($finalOptions, useCssVariables);
+    $autoThickness: map.get($finalOptions, thickness) == auto;
+
+    @if $useCssVariables {
+        --size: #{$size};
+        --width-to-thickness-ratio: #{map.get($finalOptions, widthToThicknessRatio)};
+        --thickness: #{if($autoThickness, calc(var(--size) * var(--width-to-thickness-ratio)), map.get($finalOptions, thickness))};
+        --spins-per-second: #{map.get($finalOptions, spinsPerSecond)};
+        --fg-color: #{map.get($finalOptions, fgColor)};
+        --bg-color: #{map.get($finalOptions, bgColor)};
+        --position: #{map.get($finalOptions, position)};
+        --display: #{map.get($finalOptions, display)};
+    }
+
+    $thickness: if($useCssVariables,
+        var(--thickness),
+        if($autoThickness,
+            ($size * map.get($finalOptions, widthToThicknessRatio)),
+            map.get($finalOptions, thickness)
+        )
+    );
+    $spinsPerSecond: if($useCssVariables, var(--spins-per-second), map.get($finalOptions, spinsPerSecond));
+    $fgColor: if($useCssVariables, var(--fg-color), map.get($finalOptions, fgColor));
+    $bgColor: if($useCssVariables, var(--bg-color), map.get($finalOptions, bgColor));
+    $position: if($useCssVariables, var(--position), map.get($finalOptions, position));
+    $display: if($useCssVariables, var(--display), map.get($finalOptions, display));
+    $animationDuration: if($useCssVariables, calc(1 / var(--spins-per-second) * 1s), (math.div(1, $spinsPerSecond) * 1s));
+
+    position: $position;
+    display: $display;
+    width: if($useCssVariables, var(--size), $size);
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 50%;
+        border: $thickness solid $bgColor;
+        border-top-color: $fgColor;
+        animation: spinner-loader-rotation $animationDuration linear infinite;
+    }
+
+    @content;
+}
