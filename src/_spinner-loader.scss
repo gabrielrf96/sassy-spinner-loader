@@ -16,11 +16,13 @@
         bgColor: rgba(#828382, 0.25),
         position: relative,
         display: block,
-        useCssVariables: true
+        useCssVariables: true,
+        defineAnimation: true
     );
 
     $finalOptions: map.merge($defaultOptions, $options);
     $useCssVariables: map.get($finalOptions, useCssVariables);
+    $defineAnimation: map.get($finalOptions, defineAnimation);
     $autoThickness: map.get($finalOptions, thickness) == auto;
 
     @if $useCssVariables {
@@ -71,6 +73,10 @@
         border: $thickness solid $bgColor;
         border-top-color: $fgColor;
         animation: spinner-loader-rotation $animationDuration linear infinite;
+    }
+
+    @if $defineAnimation {
+        @include spinner-loader-animation;
     }
 
     @content;

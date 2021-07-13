@@ -47,7 +47,7 @@ article {
 
 //--- Spinner loader ---//
 
-@include spinner-loader.spinner-loader-animation;
+//@include spinner-loader.spinner-loader-animation; // Not necessary to call this manually, because the first call to spinner-loader mixin will define it automatically
 
 // With CSS custom properties (variables)
 .spinner-loader {
@@ -77,6 +77,8 @@ article {
 }
 
 // Without CSS custom properties (for older browsers)
+// Note: for clarity, none of the following calls to the mixin pass option defineAnimation: false
+// However, they all should (in a real dev environment). Otherwise, the keyframes will be defined multiple times (wasting file size in the final CSS)
 .legacy-spinner-loader {
     @include spinner-loader.spinner-loader(100px, (useCssVariables: false));
     margin: 0 auto;
