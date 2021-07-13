@@ -93,10 +93,6 @@ Here is a complete list of all available options with a brief explanation.
             <td><em>&lt;color&gt;</em></td>
             <td><em><strong>#008cff</strong></em></td>
         </tr>
-        position: relative,
-        display: block,
-        useCssVariables: true,
-        defineAnimation: true
         <tr>
             <td><strong>bgColor</strong></td>
             <td>Background color. It's the color of the static ring behind the moving piece. Semitransparent, neutral grey by default.</td>
