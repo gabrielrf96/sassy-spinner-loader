@@ -11,8 +11,8 @@
 
     $defaultOptions: (
         thickness: auto,
-        widthToThicknessRatio: 0.125,
-        spinsPerSecond: 1.25,
+        thicknessRatio: 0.125,
+        speed: 1.25,
         fgColor: #008cff,
         bgColor: rgba(#828382, 0.25),
         position: relative,
@@ -28,9 +28,9 @@
 
     @if $useCssVariables {
         --size: #{$size};
-        --width-to-thickness-ratio: #{map.get($finalOptions, widthToThicknessRatio)};
-        --thickness: #{if($autoThickness, calc(var(--size) * var(--width-to-thickness-ratio)), map.get($finalOptions, thickness))};
-        --spins-per-second: #{map.get($finalOptions, spinsPerSecond)};
+        --thickness-ratio: #{map.get($finalOptions, thicknessRatio)};
+        --thickness: #{if($autoThickness, calc(var(--size) * var(--thickness-ratio)), map.get($finalOptions, thickness))};
+        --speed: #{map.get($finalOptions, speed)};
         --fg-color: #{map.get($finalOptions, fgColor)};
         --bg-color: #{map.get($finalOptions, bgColor)};
         --position: #{map.get($finalOptions, position)};
@@ -40,16 +40,16 @@
     $thickness: if($useCssVariables,
         var(--thickness),
         if($autoThickness,
-            ($size * map.get($finalOptions, widthToThicknessRatio)),
+            ($size * map.get($finalOptions, thicknessRatio)),
             map.get($finalOptions, thickness)
         )
     );
-    $spinsPerSecond: if($useCssVariables, var(--spins-per-second), map.get($finalOptions, spinsPerSecond));
+    $speed: if($useCssVariables, var(--speed), map.get($finalOptions, speed));
     $fgColor: if($useCssVariables, var(--fg-color), map.get($finalOptions, fgColor));
     $bgColor: if($useCssVariables, var(--bg-color), map.get($finalOptions, bgColor));
     $position: if($useCssVariables, var(--position), map.get($finalOptions, position));
     $display: if($useCssVariables, var(--display), map.get($finalOptions, display));
-    $animationDuration: if($useCssVariables, calc(1 / var(--spins-per-second) * 1s), (math.div(1, $spinsPerSecond) * 1s));
+    $animationDuration: if($useCssVariables, calc(1 / var(--speed) * 1s), (math.div(1, $speed) * 1s));
 
     position: $position;
     display: $display;

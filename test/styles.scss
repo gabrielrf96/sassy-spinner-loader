@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '../src/spinner-loader';
+@use '../src/sassy-spinner-loader';
 
 
 //--- General styles ---//
@@ -51,7 +51,7 @@ article {
 
 // With CSS custom properties (variables)
 .spinner-loader {
-    @include spinner-loader.spinner-loader(100px);
+    @include sassy-spinner-loader.spinner-loader(100px);
     margin: 0 auto;
 
     // Defining variants with classes, overriding CSS variables
@@ -60,7 +60,7 @@ article {
     }
 
     &.fast {
-        --spins-per-second: 2;
+        --speed: 2;
     }
 
     &.big {
@@ -68,7 +68,7 @@ article {
     }
 
     &.slim {
-        --width-to-thickness-ratio: 0.05;
+        --thickness-ratio: 0.05;
     }
 
     &.fixed-thickness {
@@ -80,7 +80,7 @@ article {
 // Note: for clarity, none of the following calls to the mixin pass option defineAnimation: false
 // However, they all should (in a real dev environment). Otherwise, the keyframes will be defined multiple times (wasting file size in the final CSS)
 .legacy-spinner-loader {
-    @include spinner-loader.spinner-loader(100px, (useCssVariables: false));
+    @include sassy-spinner-loader.spinner-loader(100px, (useCssVariables: false));
     margin: 0 auto;
 
     // Defining variants in legacy mode (no CSS variables) is a bit more cumbersome, since you need to redefine CSS properties directly
@@ -105,7 +105,7 @@ article {
     }
 
     &.slim {
-        // In legacy mode, there is no way to override width-to-thickness ratio dynamically (only possibility is setting a fixed thickness)
+        // In legacy mode, there is no way to override thickness ratio dynamically (only possibility is setting a fixed thickness)
     }
 
     &.fixed-thickness {
@@ -117,7 +117,7 @@ article {
 
 // Alternatively, you can define variants by calling the mixin multiple times. However, this has the downside of generating much larger CSS files
 .legacy-spinner-loader--black {
-    @include spinner-loader.spinner-loader(100px, (
+    @include sassy-spinner-loader.spinner-loader(100px, (
         fgColor: #000,
         useCssVariables: false
     ));
@@ -125,28 +125,28 @@ article {
 }
 
 .legacy-spinner-loader--fast {
-    @include spinner-loader.spinner-loader(100px, (
-        spinsPerSecond: 2,
+    @include sassy-spinner-loader.spinner-loader(100px, (
+        speed: 2,
         useCssVariables: false
     ));
     margin: 0 auto;
 }
 
 .legacy-spinner-loader--big {
-    @include spinner-loader.spinner-loader(200px, (useCssVariables: false));
+    @include sassy-spinner-loader.spinner-loader(200px, (useCssVariables: false));
     margin: 0 auto;
 }
 
 .legacy-spinner-loader--slim {
-    @include spinner-loader.spinner-loader(100px, (
-        widthToThicknessRatio: 0.09,
+    @include sassy-spinner-loader.spinner-loader(100px, (
+        thicknessRatio: 0.09,
         useCssVariables: false
     ));
     margin: 0 auto;
 }
 
 .legacy-spinner-loader--fixed-thickness {
-    @include spinner-loader.spinner-loader(100px, (
+    @include sassy-spinner-loader.spinner-loader(100px, (
         thickness: 20px,
         useCssVariables: false
     ));
