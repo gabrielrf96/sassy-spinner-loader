@@ -5,6 +5,8 @@
 
 Sassy Spinner Loader is provided as a SASS mixin, for maximum flexibility and convenience. Using it is very easy!
 
+Wanna see what it looks like? [Check it out here!](https://gabrielrf96.github.io/sassy-spinner-loader/)
+
 
 ## How to use?
 
