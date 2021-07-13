@@ -1,0 +1,49 @@
+@use 'sass:math';
+@use 'sassy-spinner-loader';
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #333;
+    color: #dfdfdf;
+    text-align: center;
+}
+
+.wrapper {
+    position: absolute;
+    padding: 75px 0;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    position: absolute;
+    top: 100%;
+    margin: 0;
+    font-size: 54px;
+
+    &:not(:first-of-type) {
+        margin-top: 60px;
+    }
+}
+
+p {
+    position: absolute;
+    margin: 1em 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    color: #888;
+}
+
+.spinner-loader {
+    @include sassy-spinner-loader.spinner-loader(250px);
+    margin: 0 auto;
+}
