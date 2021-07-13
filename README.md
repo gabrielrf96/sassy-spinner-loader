@@ -161,7 +161,7 @@ We've seen how easy it is to define our spinner loader, and how to customize it 
 
 > That's all good and dandy, but no one needs a single loading wheel!
 >
-> *~ Jane Doe, about needing multiple loading wheels on her website.*
+> ~ *Jane Doe, about needing multiple loading wheels on her website.*
 
 Indeed, one might need more than one loading wheel on their website. You might need different sizes, different speeds, and even different colors.
 
@@ -171,7 +171,7 @@ Luckily for all of us, Sassy Spinner Loader uses **CSS variables** to define all
 
 > Hooray!
 >
-> *~ Jane Doe, after reading the last few paragraphs.*
+> ~ *Jane Doe, after reading the last few paragraphs.*
 
 Here is a list of all available customization options, from the `$options` parameter, and their corresponding CSS variables:
 
